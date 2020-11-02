@@ -1,5 +1,5 @@
-import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -12,7 +12,7 @@ public class AppUi implements ActionListener, WindowListener {
 	private Frame f = new Frame();
 
 	public AppUi() {
-		f.setLayout(new FlowLayout());
+		f.setLayout(new GridLayout());
 		
 		f.setTitle("Job Tracker");
 		f.setSize(windowX, windowY);
@@ -23,7 +23,7 @@ public class AppUi implements ActionListener, WindowListener {
 	}
 
 	public static void main(String[] args) {
-		AppUi app = new AppUi();
+		new AppUi();
 	}
 
 	@Override
@@ -31,41 +31,38 @@ public class AppUi implements ActionListener, WindowListener {
 		// TODO Auto-generated method stub
 
 	}
-
-
 	@Override
 	public void windowClosing(WindowEvent e) {
 		System.exit(0);
 	}
+	
+	/*
+	 * not currently in use
+	 */
 	@Override
 	public void windowClosed(WindowEvent e) {
 		
 	}
-
 	@Override
 	public void windowIconified(WindowEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void windowDeiconified(WindowEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void windowActivated(WindowEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void windowDeactivated(WindowEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	public void windowOpened(WindowEvent e) {
 		// TODO Auto-generated method stub
