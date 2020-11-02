@@ -5,6 +5,7 @@ public class Job {
 	public String dateApplied;
 	public boolean answered;
 
+	//constructor
 	public Job(String company, String link, String dateApplied) {
 		this.company = company;
 		this.link = link;
@@ -12,7 +13,11 @@ public class Job {
 		this.answered = false;
 	}
 
-	public void answer() {
+	/*
+	 * function to update value of answered.
+	 * To be used when a company responds to an application. 
+	 */
+	public void updateStatus() {
 		this.answered = true;
 	}
 }
