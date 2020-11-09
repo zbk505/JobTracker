@@ -16,7 +16,7 @@ public class JobTracker {
 	/*
 	 * @param filename
 	 * 
-	 * Constructor to read
+	 * Constructor to read from file
 	 */
 	public JobTracker(String filename) {
 
@@ -52,17 +52,26 @@ public class JobTracker {
 			this.total = applied.size();
 			br.close();
 		} catch (IOException e) {
-			this.file = new File("jt.txt");
-
-			try {
-				BufferedWriter bw = new BufferedWriter(new FileWriter(this.file));
-				bw.write("Company, Link, Date Applied, Answered");
-				bw.close();
-			} catch (IOException f) {
-				e.printStackTrace();
-			}
-			System.out.printf("new file 'jt.txt' created\n");
+			e.printStackTrace();
 		}
+	}
+	/*
+	 * Constructor for when no file exists already
+	 * 
+	 */
+	public JobTracker()
+	{
+		this.file = new File("jt.csv");
+		System.out.printf("new file 'jt.txt' created\n");
+		this.applied = new ArrayList<Job>();
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter(this.file, true));
+			bw.write("Company, Link, Date Applied, Answered");// create headings in new file
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	/*
@@ -106,8 +115,8 @@ public class JobTracker {
 		String dateApplied = j.getDate();
 
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter(this.file));
-			bw.write(String.format("%s,%s,%s,%s", company, link, dateApplied, j.getAnswered()));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(this.file, true) );
+			bw.write(String.format("\n%s,%s,%s,%s", company, link, dateApplied, j.getAnswered()));
 			bw.close();
 		} catch (IOException e) {
 			e.printStackTrace();

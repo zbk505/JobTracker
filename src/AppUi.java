@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.net.URL;
 
 import javax.swing.JButton;
 
@@ -21,10 +22,18 @@ public class AppUi implements ActionListener, WindowListener {
 	private TextField link_input;
 	private TextField date_input;
 	private JButton add;
-	private JobTracker jt = new JobTracker("Users\\bakerz\\eclipse-workspaces\\JobTracker\\src\\jt.csv");
+	private JobTracker jt;
 	
-
 	public AppUi() {
+		URL path = ClassLoader.getSystemResource("jt.txt");
+		if(path==null) {
+			this.jt = new JobTracker();
+		}
+		else
+		{
+			this.jt = new JobTracker(path.toString());
+		}
+		
 		f.setLayout(new FlowLayout());
 		
 		f.setTitle("Job Tracker");
@@ -49,7 +58,6 @@ public class AppUi implements ActionListener, WindowListener {
 		f.add(date_input);
 		
 		add = new JButton("add job");
-		add.setLocation(0,0);
 		add.setSize(10,10);
 		add.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e)
