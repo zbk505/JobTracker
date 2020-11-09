@@ -1,9 +1,9 @@
 //Zachary Baker
 public class Job {
-	public String company;
-	public String link;
-	public String dateApplied;
-	public boolean answered;
+	private String company;
+	private String link;
+	private String dateApplied;
+	private boolean answered;
 
 	//constructor
 	public Job(String company, String link, String dateApplied) {
@@ -12,12 +12,32 @@ public class Job {
 		this.dateApplied = dateApplied;
 		this.answered = false;
 	}
-
+	// getters
+	public String getCompanyName()
+	{
+		return company;
+	}
+	public String getLink()
+	{
+		return link;
+	}
+	public String getDate()
+	{
+		return dateApplied;
+	}
+	public boolean getAnswered()
+	{
+		return answered;
+	}
 	/*
 	 * function to update value of answered.
 	 * To be used when a company responds to an application. 
 	 */
 	public void updateStatus() {
 		this.answered = true;
+	}
+	public String toString()
+	{
+		return String.format("%s, %s, %s, %s", company, link, dateApplied, "Answered: " + answered);
 	}
 }
